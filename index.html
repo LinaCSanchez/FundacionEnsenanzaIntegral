@@ -91,7 +91,7 @@
             <h2 class="text-center mb-5">Nuestras Ventajas</h2>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card mb-4">
+                    <div class="card mb-4" style="min-height: 265px;">
                         <div class="card-body text-center">
                             <i class="fas fa-graduation-cap fa-3x mb-3 text-primary"></i>
                             <h3>Educación de Calidad</h3>
@@ -100,7 +100,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card mb-4">
+                    <div class="card mb-4" style="min-height: 265px;">
                         <div class="card-body text-center">
                             <i class="fas fa-users fa-3x mb-3 text-primary"></i>
                             <h3>Profesores Expertos</h3>
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card mb-4">
+                    <div class="card mb-4" style="min-height: 265px;">
                         <div class="card-body text-center">
                             <i class="fas fa-book-reader fa-3x mb-3 text-primary"></i>
                             <h3>Metodología Innovadora</h3>
@@ -125,15 +125,15 @@
     <section id="nosotros" class="nosotros-section">
         <div class="container">
             <h2 class="text-center mb-5">Sobre Nosotros</h2>
-            <div class="row align-items-center">
-                <div class="col-md-6">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-3">
+                    <img src="estudiantes.png" alt="Sobre Nosotros" width="100%" class="img-fluid rounded">
+                </div>
+                <div class="col-md-3">
                     <h3>Nuestra Misión</h3>
                     <p>Proporcionar una educación integral de calidad que forme estudiantes preparados para los desafíos del futuro.</p>
                     <h3>Nuestra Visión</h3>
                     <p>Ser referentes en la formación integral, creando líderes comprometidos con el desarrollo de la sociedad.</p>
-                </div>
-                <div class="col-md-6">
-                    <img src="https://via.placeholder.com/500x300" alt="Sobre Nosotros" class="img-fluid rounded">
                 </div>
             </div>
         </div>
@@ -149,23 +149,23 @@
                     <button type="button" data-bs-target="#eventosCarousel" data-bs-slide-to="1"></button>
                     <button type="button" data-bs-target="#eventosCarousel" data-bs-slide-to="2"></button>
                 </div>
-                <div class="carousel-inner">
+                <div class="carousel-inner bg-warning">
                     <div class="carousel-item active">
-                        <img src="https://via.placeholder.com/800x400" class="d-block w-100" alt="Evento 1">
+                        <img src="est-1.jpg" class="d-block mx-auto h-100" alt="Evento 1">
                         <div class="carousel-caption">
-                            <h3>Taller de Liderazgo</h3>
+                            <h3>Entrega de Reconocimientos</h3>
                             <p>Desarrollando habilidades de liderazgo en nuestros estudiantes</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://via.placeholder.com/800x400" class="d-block w-100" alt="Evento 2">
+                        <img src="est-2.jpg" class="d-block mx-auto h-100" alt="Evento 2">
                         <div class="carousel-caption">
                             <h3>Feria de Ciencias</h3>
                             <p>Exhibición de proyectos innovadores</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://via.placeholder.com/800x400" class="d-block w-100" alt="Evento 3">
+                        <img src="est-3.jpg" class="d-block mx-auto h-100" alt="Evento 3">
                         <div class="carousel-caption">
                             <h3>Encuentro Cultural</h3>
                             <p>Celebrando la diversidad cultural</p>
@@ -250,23 +250,23 @@
             <h2 class="text-center mb-5">Contáctenos</h2>
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <form>
+                    <div id="contact-form">
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Nombre completo" required>
+                            <input type="text" class="form-control" id="nombre" placeholder="Nombre completo" required>
                         </div>
                         <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Correo electrónico" required>
+                            <input type="email" class="form-control" id="correo" placeholder="Correo electrónico" required>
                         </div>
                         <div class="mb-3">
-                            <input type="tel" class="form-control" placeholder="Teléfono">
+                            <input type="tel" class="form-control" id="telefono" placeholder="Teléfono">
                         </div>
                         <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="Mensaje" required></textarea>
+                            <textarea class="form-control" rows="5" id="mensaje" placeholder="Mensaje" required></textarea>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                            <button id="enviarBtn" class="btn btn-primary">Enviar Mensaje</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -282,5 +282,51 @@
     <!-- Bootstrap JS y Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Este es un Script para enviar los datos del formulario a la base de datos -->
+    <!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Este es un Script para enviar los datos del formulario a la base de datos -->
+<script>
+    $('#enviarBtn').on('click', function () {
+        const datos = {
+            nombre: $('#nombre').val(),
+            correo: $('#correo').val(),
+            telefono: $('#telefono').val(),
+            mensaje: $('#mensaje').val()
+        };
+
+        $.ajax({
+            url: 'api/api_guardar_contacto.php',
+            method: 'POST',
+            dataType: 'json', // importante para que jQuery lo convierta
+            data: datos,
+            success: function (respuesta) {
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Gracias por contactarnos!',
+                    text: 'Se ha enviado tu registro. Nos contactaremos muy pronto contigo.',
+                    confirmButtonText: 'Aceptar'
+                });
+
+                // Limpiar formulario
+                $('#contact-form').find("input, textarea").val("");
+            },
+            error: function () {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Hubo un error al enviar el mensaje. Inténtalo más tarde.',
+                    confirmButtonText: 'Aceptar'
+                });
+            }
+        });
+    });
+</script>
+
+    
 </body>
 </html>
